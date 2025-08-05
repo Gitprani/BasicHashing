@@ -1,0 +1,45 @@
+only lower case(ch - 'A, if uppercase)
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String str=s.nextLine();
+		
+		int hash[]=new int[26];
+		for(int i=0;i<str.length();i++){
+		    hash[str.charAt(i) - 'a' ]++;
+		}
+		int n=s.nextInt();
+		while(n-->0){
+		    char ch=s.next().charAt(0);
+		    System.out.print(hash[ch-'a']);
+		}
+		
+		
+	}
+}
+---------------------------------------------
+Universal(all characters)
+import java.util.*;
+
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		String str=s.nextLine();
+		
+		int hash[]=new int[256];
+		for(int i=0;i<str.length();i++){
+		    hash[str.charAt(i)]++;
+		}
+		int n=s.nextInt();
+		while(n-->0){
+		    char ch=s.next().charAt(0);
+		    System.out.print(hash[ch]);
+		}
+		
+		
+	}
+}
