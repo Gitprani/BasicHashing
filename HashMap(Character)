@@ -1,0 +1,31 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		
+		Scanner s =new Scanner(System.in);
+		String str=s.nextLine();
+		
+		HashMap<Character,Integer> mpp=new HashMap<>();
+	    for(int i=0;i<str.length();i++){
+	        char key=str.charAt(i);
+	        int value=1; // initialize count to 1
+	        if(mpp.containsKey(key)){
+	            value=mpp.get(key); // gets the existingcount(fre) of key
+	            value++; // increment count
+	        }
+	        mpp.put(key,value); // add every new (key,value) if updated or not
+	    }
+	    
+		int q=s.nextInt();
+		while(q-->0){
+		    char check=s.next().charAt(0);
+		    if(mpp.containsKey(check)){
+		        System.out.print(mpp.get(check)+" "); // printing 'value'
+		    }
+		    else{
+		        System.out.print(0);
+		    }
+		}
+	}
+}
