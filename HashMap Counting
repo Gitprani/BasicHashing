@@ -13,18 +13,18 @@ public class Main
 		HashMap<Integer,Integer> mpp=new HashMap<>();
 	    for(int i=0;i<n;i++){
 	        int key=arr[i];
-	        int value=0;
+	        int value=1; // initialize count to 1
 	        if(mpp.containsKey(key)){
 	            value=mpp.get(key); // gets the existingcount(fre) of key
+	            value++; // increment count
 	        }
-	        value++; // increment count
 	        mpp.put(key,value); // add every new (key,value) if updated or not
 	    }
 	    
 		int q=s.nextInt();
 		while(q-->0){
 		    int check=s.nextInt();
-		    if(mpp.containsKey(check)){                         Time Complexity=O(1)
+		    if(mpp.containsKey(check)){
 		        System.out.print(mpp.get(check)+" ");
 		    }
 		    else{
