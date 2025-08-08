@@ -1,0 +1,28 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int arr[]=new int[n];
+		for(int i=0;i<n;i++){
+		    arr[i]=s.nextInt();
+		}
+		HashMap<Integer,Integer> mpp=new HashMap<>();
+		for(int i=0;i<n;i++){
+		int key=arr[i];
+		int value=1;
+		
+		if(mpp.containsKey(key)){
+		    value=mpp.get(key);
+		    value++;
+		}
+		mpp.put(key,value);
+		}
+
+		for(Map.Entry<Integer,Integer> entry : mpp.entrySet()){
+		    System.out.println(entry.getKey()+" "+entry.getValue());
+		    // iteration prints in sorted manner
+		}
+	}
+}
