@@ -1,0 +1,39 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+		int n=6;
+		int arr[]={15,10,15,10,15,3};
+		
+		HashMap<Integer,Integer> mpp=new HashMap<>();
+		for(int i=0;i<n;i++){
+		int key=arr[i];
+		int value=1;
+		
+		if(mpp.containsKey(key)){
+		    value=mpp.get(key);
+		    value++;
+		}
+		mpp.put(key,value);
+		}
+		
+		int maxVal=0,maxFre=0;
+		int minVal=999999,minFre=9999999;
+		
+		for(Map.Entry<Integer,Integer> entry : mpp.entrySet()){
+		    int count=entry.getValue();
+		    int element=entry.getKey();
+		    
+		    if(count>maxFre){
+		        maxFre=count;
+		        maxVal=element;
+		    }
+		    if(count<minFre){
+		        minFre=count;
+		        minVal=element;
+		    }
+		}
+		System.out.println("Highest Frequency Element : "+maxVal+" appearing "+maxFre+" times");
+		System.out.println("Lowest Frequency Element : "+minVal+" appearing "+minFre+" times");
+	}
+}
