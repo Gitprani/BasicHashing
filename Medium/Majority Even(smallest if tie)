@@ -21,7 +21,7 @@ class Solution {
             mpp.put(key,value);
         }
         int maxFre=0;
-        int maxEl=Integer.MAX_VALUE;
+        int MaxEl=Integer.MAX_VALUE;        // for small even
         for(Map.Entry<Integer,Integer> entry: mpp.entrySet()){
             int ele=entry.getKey();
             int max=entry.getValue();
