@@ -1,0 +1,37 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        int n=nums.length;
+        List<Integer> list=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            if(nums[i]%2==0){
+                list.add(nums[i]);
+            }
+        }
+        if(list.isEmpty()){
+            return -1;
+        }
+        HashMap<Integer,Integer> mpp=new HashMap<>();
+        for(int i=0;i<list.size();i++){
+            int key=list.get(i);
+            int value=1;
+            if(mpp.containsKey(key)){
+                value=mpp.get(key);
+                value++;
+            }
+            mpp.put(key,value);
+        }
+        int maxFre=0;
+        int maxEl=Integer.MAX_VALUE;
+        for(Map.Entry<Integer,Integer> entry: mpp.entrySet()){
+            int ele=entry.getKey();
+            int max=entry.getValue();
+
+            if(maxFre<max || maxFre==max && ele<maxEl){         // maxelement and if a tie the smallest key(element)
+                maxFre=max;
+                maxEl=ele;
+            }
+        }
+        return maxEl;
+        
+    }
+}
