@@ -1,0 +1,26 @@
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer,Integer> mpp=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int key=nums[i];
+            int value=1;
+
+            if(mpp.containsKey(key)){
+                value=mpp.get(key);
+                value++;
+            }
+            mpp.put(key,value);
+        }
+        List<Map.Entry<Integer,Integer>> list=new ArrayList<>(mpp.entrySet());
+        Collections.sort(list, (a,b) -> b.getValue()-a.getValue());                                     // descending sort
+        
+        int arr[]=new int[k];                                                                                                // a,b are Map.Entry objects
+        for(int i=0;i<k;i++){
+            arr[i]=list.get(i).getKey();
+        }
+        return arr;                                                                                             //(a,b) -> b.getValue - a/getValue), comparator-sorts descendingly
+    
+    }
+}
+
+    
