@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        String str="Ababdddrabac";
+        str=str.toLowerCase();
+        System.out.print(count(str));
+        
+    }                                                                                       Complexity=O(2n),O(n)
+    public static int count(String str){
+        HashMap<Character, Integer> mpp=new HashMap<>();
+        for(int i=0;i<str.length();i++){
+            char key=str.charAt(i);
+            int value=1;
+            
+            if(mpp.containsKey(key)){
+                value=mpp.get(key);
+                value++;
+            }
+            mpp.put(key,value);                      // in hashmap take count of all char
+        }
+        int maxCount=0;
+        StringBuilder sb=new StringBuilder();         // to check for multiple maxChar of "same length"
+        for(Map.Entry<Character, Integer> entry : mpp.entrySet()){        
+            int count=entry.getValue();
+            char maxChar=entry.getKey();
+            
+            if(count>maxCount){        
+                maxCount=count;
+                sb.setLength(0);             //for every new maxChar set the length to 0
+                sb.append(maxChar);           // add only maxChar(s)
+            }
+            else if(count==maxCount){         //if multiple maxChar with same maxCount
+                sb.append(maxChar);          //just add without setting it 0
+            }
+        }
+        if(sb.length()>1){                 // if more than 1 keys with same maxCount
+            return 0;
+        }
+    else{
+        return maxCount;
+    }
+    }
+}
